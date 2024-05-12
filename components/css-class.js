@@ -1,0 +1,10 @@
+export const pageCls = "";
+export const containerCls = "";
+export const cardCls = "";
+export const buttonCls = "";
+export const h1Cls = "";
+export const h2Cls = "";
+export const h3Cls = "";
+export const h4Cls = "";
+export const h5Cls = "";
+export const h6Cls = "";
