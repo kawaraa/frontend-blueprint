@@ -1,0 +1,26 @@
+name: Fronted CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: [label-1, label-2] # Docker has to be installed on the vim where the runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Stop old container
+        run: docker rm -f frontend || true
+
+      - name: Build Docker image
+        run: docker build --build-arg NEXT_API_URL=${{ vars.NEXT_API_URL }} -t frontend .
+
+      - name: Run new container
+        run: docker run -d --name frontend -p 8000:80 --restart unless-stopped frontend
+
+      - name: Cleanup old images
+        run: docker image prune -f
