@@ -12,6 +12,21 @@ View (V): Represents the presentation layer of the application. Views are respon
 
 Controller (C): In a frontend application, controllers are often replaced with components, routers, or state management libraries. Components encapsulate both the presentation logic (how UI elements are rendered) and the behavior logic (how UI elements respond to user interactions). Routers handle navigation between different views or components, while state management libraries help manage application state and data flow.
 
+## HTML5 semantic elements
+
+HTML5 has several semantic elements that define the different parts of a web page:
+
+- `<header>` Defines a header for a document or a section
+- `<nav>` Defines a set of navigation links
+- `<section>` Defines a section in a document
+- `<article>` Defines independent, self-contained content
+- `<aside>` Defines content aside from the content (like a sidebar)
+- `<footer>` Defines a footer for a document or a section
+- `<details>` Defines additional details that the user can open and close on demand
+- `<summary>` Defines a heading for the `<details>` element
+
+You can read more about semantic elements in our HTML Semantics chapter on [w3schools](https://www.w3schools.com/html/html5_semantic_elements.asp)
+
 ### Theme colors:
 
 #### Light:
