@@ -6,7 +6,7 @@ import { getBrowserLanguage, getSupportedLanguage } from "@/util/get-browser-lan
 import getMetadata from "./metadata";
 import { StateProvider } from "./state";
 import Navigation from "@/component/navigation";
-import Footer from "@/component/footer copy";
+import Footer from "@/component/footer";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -27,19 +27,22 @@ export default async function RootLayout({ children, params, searchParams }) {
   return (
     <html translate="no" lang="en" className={`scroll-smooth ${themeMode}`}>
       <body
-        className={`${
-          lang == "ar" ? kufiFont.className : geistSans.variable + " " + geistMono.variable
-        } antialiased bg-neutral-50 text-slate-700 selection:bg-teal-300 dark:bg-black dark:text-gray-300 dark:selection:bg-pink-500 dark:selection:text-white`}
+        className={`${kufiFont.className} ${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col antialiased bg-neutral-50 text-slate-700 selection:bg-teal-300 dark:bg-black dark:text-gray-300 dark:selection:bg-pink-500 dark:selection:text-white`}
       >
         <Suspense>
           <StateProvider>
+            <header></header>
+
             <Navigation lang={lang} />
 
-            <main className="min-h-screen pt-10 pb-24 px-1 sm:px-2 md:px-4 print:min-h-fit" dir="auto">
+            <main
+              className="flex-auto pt-10 pb-24 px-1 sm:px-2 md:px-4 flex flex-col gap-[32px] justify-start items-center sm:justify-center"
+              dir="auto"
+            >
               {children}
             </main>
 
-            <Footer />
+            <Footer lang={lang} />
           </StateProvider>
         </Suspense>
       </body>
