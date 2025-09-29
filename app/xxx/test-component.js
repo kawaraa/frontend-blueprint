@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import IosInstallModal from "./ios-install-modal";
 
 export default function TextComponent({ params, searchParams }) {
   // const [loading, setLoading] = useState(true);
@@ -8,7 +7,6 @@ export default function TextComponent({ params, searchParams }) {
   return (
     <>
       <button onClick={() => setX(true)}>show</button>
-      <IosInstallModal lang="en" />
     </>
   );
 }

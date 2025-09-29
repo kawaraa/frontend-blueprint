@@ -31,7 +31,7 @@ export default function Modal({ Tag, lang = "en", title, open, loading, icon, ..
             onClick={props.onCancel}
             disabled={!!loading}
             title={content.cancel[lang]}
-            className={`cursor-pointer w-8 p-1 absolute top-3 right-3 hover:text-red-300 print:hidden`}
+            className={`cursor-pointer w-8 p-1 absolute transition top-3 right-3 hover:text-red-700 print:hidden`}
           >
             <SvgIcon name="crossMark" />
           </button>
