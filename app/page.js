@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { cookies } from "next/headers";
 import { getSupportedLanguage } from "@/util/get-browser-language";
+import Modal from "./xxx/modal";
+import Loader from "./xxx/loader";
 
 export default async function Home({ params, searchParams }) {
   const lang =
@@ -14,7 +16,10 @@ export default async function Home({ params, searchParams }) {
       {/* "flex flex-col gap-[32px] row-start-2 items-center sm:items-start" */}
       <Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
 
-      <div class="bg-white text-gray-900 border border-gray-200 shadow-md rounded-2xl p-4">
+      <Loader loading size="20" screen />
+      <Modal></Modal>
+
+      <div className="bg-white text-gray-900 border border-gray-200 shadow-md rounded-2xl p-4">
         Light mode card cnjcb piushdc spciuh oisdc sdc spcsc spsc spchsp cspcsoc spcpsc psps psvpvu pv
         pvdfvpoijhfv povij csuchisc pscspuc psch pscius ch Light mode card cnjcb piushdc spciuh oisdc sdc
         spcsc spsc spchsp cspcsoc spcpsc psps psvpvu pv pvdfvpoijhfv povij csuchisc pscspuc psch pscius ch

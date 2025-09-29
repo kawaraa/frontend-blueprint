@@ -58,7 +58,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Icons
 
-- This project uses [Lucide](https://lucide.dev/icons/) icon library.
+- This project uses [Lucide](https://lucide.dev/icons/) icon library. The Key Features, Clean, minimal design, community-driven, highly customizable and Officially supports tree-shaking. some development environment slowdowns (e.g., with Vite)
 
 ## Theme colors:
 
