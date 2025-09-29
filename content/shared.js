@@ -1,3 +1,5 @@
+export const title = { en: "Site name", ar: "AR Site name" };
+
 export const done = { en: "Done", ar: "تم" };
 export const send = { en: "Send", ar: "إرسال" };
 
