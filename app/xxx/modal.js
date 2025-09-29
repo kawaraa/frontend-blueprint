@@ -2,7 +2,7 @@
 import Transition from "./transition.js";
 import SvgIcon from "./svg-icon.js";
 import { btnCls } from "./tw/button.js";
-import { X } from "lucide-react";
+import Loader from "./loader.js";
 
 export default function Modal({ Tag, lang = "en", title, open, loading, icon, ...props }) {
   const cls = open ? "!h-full p-4 opacity-100" : "";
@@ -11,15 +11,15 @@ export default function Modal({ Tag, lang = "en", title, open, loading, icon, ..
   return (
     <>
       <div
-        className={`z-[9] fixed inset-0 h-0 p-0 bg-blur opacity-0 transition-opacity duration-200 ${cls}`}
+        className={`z-[9] fixed inset-0 h-0 p-0 bg-black/50 opacity-0 transition-opacity duration-200 ${cls}`}
         onClick={props.onCancel}
       ></div>
 
       <Transition
         Tag={Tag || "div"}
-        base={`z-[9] fixed left-5 ${c} right-5 p-4 pt-10 overflow-hidden rounded-lg bg-bg dark:bg-dcbg md:min-w-[550px] md:max-w-xl mx-auto print:overflow-auto print:static print:top-0 print:text-t`}
+        base={`z-[9] fixed left-5 ${c} right-5 p-4 pt-10 overflow-hidden rounded-lg bg-white dark:bg-dcbg md:min-w-[550px] md:max-w-xl mx-auto print:overflow-auto print:static print:top-0 `}
         enter="opacity-100 md:scale-100"
-        exit="opacity-0 translate-y-4 md:scale-75"
+        exit="opacity-0 translate-y-4 md:scale-50"
         time="300"
         open={open}
         aria-label={`${title} ${content.label[lang]}`}
@@ -31,16 +31,21 @@ export default function Modal({ Tag, lang = "en", title, open, loading, icon, ..
             onClick={props.onCancel}
             disabled={!!loading}
             title={content.cancel[lang]}
-            className={`${btnCls} w-8 absolute top-3 right-3 hover:text-red print:hidden`}
+            className={`cursor-pointer w-8 p-1 absolute top-3 right-3 hover:text-red-300 print:hidden`}
           >
-            <X />
+            <SvgIcon name="crossMark" />
           </button>
         )}
         <div dir="ltr" className="block pb-4 md:flex justify-start">
           {icon && (
-            <div className="h-12 w-12 shrink-0 p-2 mx-auto mt-1 mb-3 md:mr-2 rounded-full">{icon}</div>
+            <div
+              className={`h-12 w-12 shrink-0 p-2 mx-auto mt-1 mb-3 md:mr-2 rounded-full ${
+                icon === "warning" ? "text-red-400" : ""
+              }`}
+            >
+              {typeof icon === "string" ? <SvgIcon name={icon} /> : icon}
+            </div>
           )}
-
           <div dir="auto" className="flex-auto">
             <h2 className="mb-1 mx-8 text-lg text-center print:text-3xl font-semibold">{title}</h2>
             <div className="max-h-[70vh] overflow-scroll no-srl-bar print:max-h-none print:overflow-auto">
@@ -54,10 +59,10 @@ export default function Modal({ Tag, lang = "en", title, open, loading, icon, ..
             <button
               type={Tag == "form" ? "submit" : ""}
               onClick={props.onApprove}
-              loading={loading}
-              className={`${btnCls} print:hidden w-full md:w-auto justify-center py-2`}
+              className={`${btnCls} w-full md:w-auto justify-center py-2 gap-2 print:hidden `}
             >
               {props.okBtn}
+              {<Loader loading={loading} size="20" />}
             </button>
           </div>
         )}
@@ -70,13 +75,3 @@ const content = {
   cancel: { en: "Cancel and close the modal window", ar: "إلغاء وإغلاق النافذة" },
   label: { en: "modal window", ar: "نافذة مشروطة" },
 };
-
-{
-  /* <div
-  className={`h-12 w-12 shrink-0 p-2 mx-auto mt-1 mb-3 md:mr-2 rounded-full ${
-    icon === "warning" ? "bg-bg1 text-red" : "bg-pc text-t"
-  }`}
->
-  {typeof icon === "string" ? <SvgIcon name={icon} /> : icon}
-</div>; */
-}

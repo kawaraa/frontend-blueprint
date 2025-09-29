@@ -34,8 +34,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* background: var(--background);
+  color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
   /* font-family: "Noto Kufi Arabic", monospace, sans-serif, Arial, Helvetica; */
 }
@@ -164,6 +164,24 @@ input:disabled:hover,
 
 .t-shadow {
   text-shadow: 0px 0px 10px #000000;
+}
+
+a.hvr {
+  display: inline-block;
+  position: relative;
+}
+a.hvr:after {
+  display: block;
+  content: "";
+  border-bottom: solid 1.5px;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+  transform-origin: 0% 50%;
+}
+a.hvr:hover:after,
+a.hvr:active:after,
+a.active:after {
+  transform: scaleX(1);
 }
 
 /* Good for bar loading animation: transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1); */
