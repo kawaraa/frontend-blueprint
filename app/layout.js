@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Suspense } from "react";
 import { getBrowserLanguage, getSupportedLanguage } from "@/util/get-browser-language";
@@ -9,8 +9,8 @@ import Navigation from "@/component/navigation";
 import Footer from "@/component/footer";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+// const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+// const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const kufiFont = localFont({ src: "../public/font/NotoKufiArabic-VariableFont_wght.ttf", display: "swap" });
 
 export default async function RootLayout({ children, params, searchParams }) {
@@ -26,8 +26,9 @@ export default async function RootLayout({ children, params, searchParams }) {
 
   return (
     <html translate="no" lang="en" className={`scroll-smooth ${themeMode}`}>
+      {/* bg-neutral-50 text-slate-700 dark:bg-black dark:text-gray-300 */}
       <body
-        className={`${kufiFont.className} ${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col antialiased bg-neutral-50 text-slate-700 selection:bg-teal-300 dark:bg-black dark:text-gray-300 dark:selection:bg-pink-500 dark:selection:text-white`}
+        className={`${kufiFont.className} min-h-screen flex flex-col antialiased selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white`}
       >
         <Suspense>
           <StateProvider>

@@ -1,21 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Background - #f4f4f4 */
+  --foreground: #171717; /* Text Color */
+  --primary: #0d624b;
+  --secondary: #9e8a58;
+  --card-bg: #ffffff; /* Card Background - #ffffff1a*/
+  --input-bg: #ffffff;
+  --text: #000; /* #585757 | #0000001a */
+  --link: #8586e5; /*  */
+  --border-focus: #9aa0a6; /* Border focus color */
+  --border: #0000001a;
+  --border-hover: rgb(0 0 0 / 0.1);
+  --hover: #0000001a; /* Border Color & Hover effect */
 }
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0a0a; /* Dark Background - #111 */
+    --foreground: #ededed; /* Title Color */
+    --card-bg: #272727; /* Dark card Background - #263546 */
+    --input-bg: #ffffff1a;
+    --border: #666666;
+    --border-hover: #ffffff1a;
   }
 }
 
@@ -23,4 +37,186 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* font-family: "Noto Kufi Arabic", monospace, sans-serif, Arial, Helvetica; */
+}
+
+.c-white {
+  color: #feffff; /*  */
+}
+.c-gray {
+  color: #6b7280; /* 999 */
+}
+.c-dark {
+  color: #24305e; /* #6b7280 */
+}
+.c-red {
+  color: #f76c6c; /* #ff6446 */
+}
+.c-green {
+  color: #8fbc8f; /* #14d263 | #50C878 | #008000 */
+}
+.c-blue {
+  color: #6495ed; /* #4696ff */
+}
+.c-blue {
+  color: #00000033; /* #4169e1 */
+}
+.c-orange {
+  color: #ffa500; /*  */
+}
+.bgc-white {
+  background-color: #feffff; /*  */
+}
+.bgc-gray {
+  background-color: #6b7280; /* 999 */
+}
+.bgc-dark {
+  background-color: #24305e; /* #6b7280 */
+}
+.bgc-red {
+  background-color: #f76c6c; /* #ff6446 */
+}
+.bgc-green {
+  background-color: #8fbc8f; /* #14d263 | #50C878 | #008000 */
+}
+.bgc-blue {
+  background-color: #6495ed; /* #4696ff */
+}
+.bgc-blue {
+  background-color: #00000033; /* #4169e1 */
+}
+.bgc-orange {
+  background-color: #ffa500; /*  */
+}
+
+/* Todo: make the image load effect for all images using image background */
+/* :empty {
+} */
+
+.no-select {
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  -webkit-user-select: none; /* Safari */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  -o-user-select: none; /* Opera */
+}
+
+.rq::before {
+  display: inline-block;
+  margin-inline-end: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+  font-family: sans-serif;
+  line-height: 1;
+  content: "*";
+}
+
+input,
+select,
+.input {
+  background: var(--input-bg);
+}
+.button {
+  background: var(--primary);
+  color: #ffffff;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.9;
+}
+button:disabled:hover,
+input:disabled:hover,
+.input:disabled:hover {
+  /* Reset hover styles */
+  background-color: inherit !important;
+  border: inherit !important;
+  cursor: not-allowed !important;
+}
+.loading {
+  /* Reset hover styles */
+  background-color: inherit !important;
+  border: inherit !important;
+  cursor: progress !important;
+}
+
+.fs:focus {
+  outline: #9aa0a6 solid 1px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.dark .fs:focus {
+  box-shadow: 0 10px 15px -3px #ffffff1a, 0 4px 6px -4px #ffffff1a;
+}
+
+/* Card hover and focus */
+.card {
+  background: var(--card-bg);
+}
+.border {
+  border: 1px solid var(--border);
+}
+.border_hvr:hover {
+  border-color: var(--border-focus);
+  transform: scale(1.01);
+  box-shadow: 3px 3px 20px 5px var(--border-hover);
+}
+
+.t-shadow {
+  text-shadow: 0px 0px 10px #000000;
+}
+
+/* Good for bar loading animation: transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1); */
+.lazy-c {
+  animation: lazy-c 0.4s ease-in 0.1s reverse backwards;
+}
+.lazy-b {
+  animation: lazy-b 0.4s ease-in 0.1s reverse backwards;
+  /* animation-delay: attr(data-d); */
+  /* animation-delay: calc(attr(data-d) * 100ms); */
+  /* animation-delay: calc(var(--a-d) * 100ms); */
+}
+.lazy-r {
+  /* transform-origin: top right; */
+  animation: lazy-r 0.4s ease-in 0.1s reverse backwards;
+}
+.lazy-l {
+  transform-origin: top left;
+  animation: lazy-l 0.4s ease-in 0.1s reverse backwards;
+}
+.msg {
+  animation: msg-top 0.3s ease-out reverse backwards;
+}
+
+@keyframes lazy-c {
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+@keyframes lazy-b {
+  100% {
+    opacity: 0;
+    transform: translate(0, 50px);
+  }
+}
+@keyframes lazy-r {
+  100% {
+    opacity: 0;
+    /* transform: rotate(-10deg) translate(5%, 80%); */
+    transform: translate(20px, 30px);
+  }
+}
+@keyframes lazy-l {
+  100% {
+    opacity: 0;
+    /* transform: rotate(10deg) translate(-5%, 50%); */
+    transform: translate(-20px, 30px);
+  }
+}
+@keyframes msg-top {
+  100% {
+    opacity: 0;
+    transform: translate(0, -50px);
+  }
 }
