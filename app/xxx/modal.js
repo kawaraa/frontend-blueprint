@@ -61,7 +61,7 @@ export default function Modal({ Tag, lang = "en", title, open, loading, icon, ..
               onClick={props.onApprove}
               className={`${btnCls} w-full md:w-auto justify-center py-2 gap-2 print:hidden `}
             >
-              {props.okBtn}
+              {props.okBtn || content.ok[lang] || content.ok.en}
               {<Loader loading={loading} size="20" />}
             </button>
           </div>
@@ -74,4 +74,10 @@ export default function Modal({ Tag, lang = "en", title, open, loading, icon, ..
 const content = {
   cancel: { en: "Cancel and close the modal window", ar: "إلغاء وإغلاق النافذة" },
   label: { en: "modal window", ar: "نافذة مشروطة" },
+  ok: { en: "Ok", ar: "حسنا" },
 };
+
+/** Usages:
+  <Modal Tag="article", lang="en", title="Add new user", open={true}, loading={false}, icon={<SomeIcon/>}, onCancel={handler} onApprove={handler} okBtn="Ok" >
+  </Modal>
+ */

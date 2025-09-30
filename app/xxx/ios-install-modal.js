@@ -62,3 +62,7 @@ const content = {
   },
   imgAlt: { en: "ArabLocalMarket Logo", ar: "شعار السوق المحلي العربي" },
 };
+
+/** Usage
+ <IosInstallModal lang="en" iconSrc="/apple-touch-icon.png" name = "The App Name"/>
+*/
