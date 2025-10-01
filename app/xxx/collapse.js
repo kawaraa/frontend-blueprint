@@ -16,11 +16,11 @@ export default function Collapse({ children, title, checked, onCheck, name, cls,
   }, [checked]);
 
   return (
-    <div className={`${borderCls} rounded-lg !p-0 dark:border-bf ${onCheck && "rounded-lg"} ${cls}`}>
+    <div className={`${borderCls} rounded-lg !p-0 dark:border-bf ${onCheck && "rounded-lg"} ${cls || ""}`}>
       {onCheck ? (
         <div className={`${headerClass} ${hCls}`}>
           <span className="mx-1">{title}</span>
-          <ToggleSwitch name={name} cls={cls?.replace(" ", "") | ""} checked={checked} onChange={onCheck} />
+          <ToggleSwitch name={name} cls={cls?.replace(" ", "") || ""} checked={checked} onChange={onCheck} />
         </div>
       ) : (
         <button

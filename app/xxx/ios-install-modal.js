@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Modal from "./modal";
 
-export default function IosInstallModal({ lang, iconSrc = "/apple-touch-icon.png", name = "" }) {
+export default function IosInstallModal({ lang, iconSrc = "/apple-touch-icon.png", name }) {
   const [open, setOpen] = useState(false);
 
   const handleCancel = () => {
@@ -25,7 +25,7 @@ export default function IosInstallModal({ lang, iconSrc = "/apple-touch-icon.png
       <div className="h-12 w-12 mx-auto rounded-full">
         <img src={iconSrc} width="100" height="100" alt={content.imgAlt[lang]} />
       </div>
-      <div className="mb-4 mt-1 text-medium font-semibold text-center">{name}</div>
+      <div className="mb-4 mt-1 text-medium font-semibold text-center">{name || ""}</div>
       <p dir="auto" className="text-center">
         {content.p[lang][0]}
       </p>

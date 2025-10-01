@@ -4,7 +4,7 @@ import Transition from "./transition";
 import SvgIcon from "./svg-icon";
 import { cardCls } from "./tw/layout";
 
-export default function Tooltip({ children, description = "", size, cls = "" }) {
+export default function Tooltip({ children, description, size, cls }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const descRef = useRef();
   const rect = descRef.current?.getBoundingClientRect();
@@ -23,16 +23,12 @@ export default function Tooltip({ children, description = "", size, cls = "" }) 
   const positionBaseClasses = () => {
     const position = getPosition();
     switch (position) {
-      case "top":
-        return "bottom-full left-1/2 -translate-x-1/2";
       case "bottom":
         return "top-full left-1/2 -translate-x-1/2";
       case "left":
         return "right-full top-1/2 -translate-y-1/2";
       case "right":
         return "left-full top-1/2 -translate-y-1/2";
-      case "bottom":
-        return "top-full left-1/2 -translate-x-1/2";
       case "top-left":
         return "bottom-full right-0";
       case "top-right":
@@ -81,7 +77,7 @@ export default function Tooltip({ children, description = "", size, cls = "" }) 
 
   return (
     <div
-      className={"relative inline-flex select-none " + cls}
+      className={`relative inline-flex select-none ${cls || ""}`}
       onClick={() => setTooltipOpen(!tooltipOpen)}
       onMouseEnter={() => setTooltipOpen(true)}
       onMouseLeave={() => setTooltipOpen(false)}
