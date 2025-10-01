@@ -8,7 +8,7 @@ export const sideNavCls = " ";
 export const pageCls = "mx-auto px-4";
 export const footerCls = " ";
 export const cardCls =
-  "bg-white rounded-xl p-3 border-1 border-neutral-200 shadow-lg shadow-neutral-200/50 hover:shadow-2xl hover:shadow-neutral-300/60 dark:shadow-none dark:hover:shadow-none dark:bg-neutral-900 dark:border-neutral-700 transition-all duration-300 ";
+  "bg-white rounded-xl p-3 border-1 border-neutral-200 shadow-md hover:shadow-lg dark:bg-neutral-900 dark:border-neutral-700 transition-all duration-300 ";
 export const boxCls = "bg-white dark:bg-neutral-900 rounded-md p-2 ";
 export const borderCls = "border-1 border-neutral-200 dark:border-neutral-700 ";
 export const skeletonCls = "animate-pulse bg-neutral-200 dark:bg-neutral-700 text-transparent rounded-lg";

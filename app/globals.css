@@ -33,12 +33,12 @@
   }
 }
 
-body {
-  /* background: var(--background);
-  color: var(--foreground); */
+/* body {
+  background: var(--background);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  /* font-family: "Noto Kufi Arabic", monospace, sans-serif, Arial, Helvetica; */
-}
+  font-family: "Noto Kufi Arabic", monospace, sans-serif, Arial, Helvetica;
+} */
 
 .c-white {
   color: #feffff; /*  */
@@ -113,59 +113,7 @@ body {
   content: "*";
 }
 
-input,
-select,
-.input {
-  background: var(--input-bg);
-}
-.button {
-  background: var(--primary);
-  color: #ffffff;
-  cursor: pointer;
-}
-.button:hover {
-  opacity: 0.9;
-}
-button:disabled:hover,
-input:disabled:hover,
-.input:disabled:hover {
-  /* Reset hover styles */
-  background-color: inherit !important;
-  border: inherit !important;
-  cursor: not-allowed !important;
-}
-.loading {
-  /* Reset hover styles */
-  background-color: inherit !important;
-  border: inherit !important;
-  cursor: progress !important;
-}
-
-.fs:focus {
-  outline: #9aa0a6 solid 1px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-.dark .fs:focus {
-  box-shadow: 0 10px 15px -3px #ffffff1a, 0 4px 6px -4px #ffffff1a;
-}
-
-/* Card hover and focus */
-.card {
-  background: var(--card-bg);
-}
-.border {
-  border: 1px solid var(--border);
-}
-.border_hvr:hover {
-  border-color: var(--border-focus);
-  transform: scale(1.01);
-  box-shadow: 3px 3px 20px 5px var(--border-hover);
-}
-
-.t-shadow {
-  text-shadow: 0px 0px 10px #000000;
-}
-
+/* Linker tag hover and focus style */
 a.hvr {
   display: inline-block;
   position: relative;
