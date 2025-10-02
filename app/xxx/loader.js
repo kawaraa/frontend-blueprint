@@ -1,5 +1,5 @@
 "use client";
-// bg-black/50 - backdrop-blur-sm
+
 export default function Loader({ loading, size = "10", screen, cls, inCls }) {
   if (!loading) return null;
   let borderSize = Math.round(+size / 10);

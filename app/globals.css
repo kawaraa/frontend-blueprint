@@ -93,6 +93,15 @@
 /* :empty {
 } */
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-srl-bar::-webkit-scrollbar {
+  display: none;
+}
+.no-srl-bar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .no-select {
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
   -webkit-user-select: none; /* Safari */
@@ -131,6 +140,13 @@ a.hvr:active:after,
 a.active:after {
   transform: scaleX(1);
 }
+
+/* tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+th:nth-child(even),td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+} */
 
 /* Good for bar loading animation: transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1); */
 .lazy-c {

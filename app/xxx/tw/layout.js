@@ -8,7 +8,7 @@ export const sideNavCls = " ";
 export const pageCls = "mx-auto px-4";
 export const footerCls = " ";
 export const cardCls =
-  "bg-white rounded-xl p-3 border-1 border-neutral-200 shadow-md hover:shadow-lg dark:bg-neutral-900 dark:border-neutral-700 transition-all duration-300 ";
+  "bg-white dark:bg-neutral-900 rounded-xl p-3 border-1 border-neutral-200 shadow-md hover:shadow-lg dark:border-neutral-700 transition-all duration-300 ";
 export const boxCls = "bg-white dark:bg-neutral-900 rounded-md p-2 ";
 export const borderCls = "border-1 border-neutral-200 dark:border-neutral-700 ";
 export const skeletonCls = "animate-pulse bg-neutral-200 dark:bg-neutral-700 text-transparent rounded-lg";
@@ -27,5 +27,6 @@ export const badge2 = `${baseBadge} bg-green-100 text-green-800`;
 export const badge3 = `${baseBadge} bg-sky-100 text-sky-800`;
 export const badge4 = `${baseBadge} bg-amber-100 text-amber-800`;
 export const badge5 = `${baseBadge} bg-violet-100 text-violet-800`;
+// export const centerShadow = "shadow-[0_0_8px_rgba(0,0,0,0.08)]"; // shadow-[0_0_10px_rgba(0,0,0,0.1)]
 
 // "truncate" class cutes the text and tail it with ...

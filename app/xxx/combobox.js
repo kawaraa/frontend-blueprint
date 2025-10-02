@@ -5,16 +5,17 @@ import { inputCls } from "./tw/input";
 import { cardCls } from "./tw/layout";
 import Transition from "./transition";
 
-export default function ComboBox({ items = [], onSearch, onSelect, multiple, key, name }) {
+export default function ComboBox({ items = [], selected = [], onSearch, onSelect, multiple, key, name }) {
   const [options, setOptions] = useState(items);
   const [showList, setShowList] = useState();
   const [value, setValue] = useState("");
-  const [selected, setSelected] = useState([]);
+  const [selectedItems, setSelectedItems] = useState(selected);
 
   const handleSelect = (index) => {
     const clickItem = options[index][key] || options[index];
-    setSelected((vs) => (vs.includes(clickItem) ? vs.filter((v) => v != clickItem) : [...vs, clickItem]));
-    if (onSelect) onSelect(clickItem);
+    setSelectedItems((vs) =>
+      !vs.includes(clickItem) ? [...vs, clickItem] : vs.filter((v) => v != clickItem)
+    );
     !multiple && setShowList(false);
   };
 
@@ -26,6 +27,10 @@ export default function ComboBox({ items = [], onSearch, onSelect, multiple, key
   };
 
   useEffect(() => {
+    if (onSelect) onSelect(selectedItems);
+  }, [selectedItems]);
+
+  useEffect(() => {
     if (onSearch) {
       setOptions(items);
       setShowList(!!items[0]);
@@ -33,12 +38,12 @@ export default function ComboBox({ items = [], onSearch, onSelect, multiple, key
   }, [items]);
 
   return (
-    <div className={`relative w-72 `}>
+    <div className={`relative w-48 `}>
       <input
         // w-full border-none py-2 pl-3 pr-10 text-sm leading-9 text-gray-900 focus:ring-0
         onFocus={() => handleSearch()}
         onChange={(e) => handleSearch(e.target.value)}
-        placeholder={selected.length > 1 ? `( ${selected.length} )` : selected[0] || ""}
+        placeholder={selectedItems.length > 1 ? `( ${selectedItems.length} )` : selectedItems[0] || ""}
         value={value}
         name={name}
         type="text"
@@ -61,13 +66,13 @@ export default function ComboBox({ items = [], onSearch, onSelect, multiple, key
       <Transition
         Tag="ul"
         open={showList && !!options?.[0]}
-        base={`${cardCls} absolute mt-1 max-h-60 w-full overflow-auto rounded-md !p-1 focus:outline-none `}
+        base={`${cardCls} absolute z-[2] mt-1 max-h-60 w-full overflow-auto rounded-md !p-1 focus:outline-none `}
         exit="opacity-0"
         time="100"
         role="listbox"
       >
         {options.map((item, i) => {
-          const checked = item.checked || selected.includes(item[key] || item);
+          const checked = item.checked || selectedItems.includes(item[key] || item);
           return (
             <li className="flex items-center select-none text-gray-900" key={i}>
               <button
