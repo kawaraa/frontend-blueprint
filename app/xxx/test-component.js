@@ -1,6 +1,5 @@
 "use client";
 import { useRef, useState } from "react";
-import Table, { TableColumnsSelect } from "./table";
 
 export default function TextComponent({ params, searchParams }) {
   const [loading, setLoading] = useState(false);
@@ -25,11 +24,7 @@ export default function TextComponent({ params, searchParams }) {
       <button onClick={() => useState(true)}>show</button>
       <div className="text-center w-full"></div>
 
-      <TableColumnsSelect columns={allFields.current} onSelect={handler} selected={allFields.current} />
-
-      <div className="text-center w-full relative">
-        <Table onCheck={console.log} imgKey="image" data={x}></Table>
-      </div>
+      <div className="text-center w-full relative"></div>
     </>
   );
 }
