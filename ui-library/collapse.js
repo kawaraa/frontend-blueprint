@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Transition from "./transition";
 import ToggleSwitch from "./toggle-switch";
 import SvgIcon from "./svg-icon";
-import { borderCls } from "./tw/layout";
+import { borderCls } from "./tailwind/layout";
 
 export default function Collapse({ children, title, checked, onCheck, name, cls, hCls = "justify-between" }) {
   // if (accordion) console.log("This a accordion, means only one panel can be expanded at a time.");

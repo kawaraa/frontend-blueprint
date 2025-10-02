@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import SvgIcon from "./svg-icon";
-import { inputCls } from "./tw/input";
-import { cardCls } from "./tw/layout";
+import { inputCls } from "./tailwind/input";
+import { cardCls } from "./tailwind/layout";
 import Transition from "./transition";
 
 export default function ComboBox({ items = [], selected = [], onSearch, onSelect, multiple, key, name }) {

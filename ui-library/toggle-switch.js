@@ -1,5 +1,5 @@
 "use client";
-import { borderCls } from "./tw/layout";
+import { borderCls } from "./tailwind/layout";
 
 export default function ToggleSwitch({ children, label, size = 50, cls, ...p }) {
   const h = Math.round(+size / 2);

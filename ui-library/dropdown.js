@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import SvgIcon from "./svg-icon";
 import Transition from "./transition";
-import { cardCls } from "./tw/layout";
+import { cardCls } from "./tailwind/layout";
 const itemCls =
   "w-full px-4 py-2 mb-1 odd:bg-white even:bg-gray-50 dark:odd:bg-gray-900/50 dark:even:bg-gray-950";
 

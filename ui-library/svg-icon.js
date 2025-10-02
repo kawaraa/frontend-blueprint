@@ -195,6 +195,21 @@ const icons = {
       />
     </svg>
   ),
+  chevronUpInCircle: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      className="pointer-events-none w-full"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="m8 14 4-4 4 4" />
+    </svg>
+  ),
   arrowDownInCircle: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -271,6 +286,32 @@ const icons = {
       <circle cx="17" cy="18" r="3" />
       <line x1="9.5" y1="10.5" x2="14.5" y2="7.5" id="Path" />
       <line x1="14.5" y1="16.5" x2="9.5" y2="13.5" id="Path" />
+    </svg>
+  ),
+  house: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      className="pointer-events-none w-full"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"
+        clipRule="evenodd"
+        fillRule="evenodd"
+      ></path>
+    </svg>
+  ),
+  forwardSlash: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      className="pointer-events-none w-full"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z"></path>
     </svg>
   ),
 };

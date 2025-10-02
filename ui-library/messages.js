@@ -3,7 +3,7 @@ import { Component } from "react";
 import TransitionContainer from "./transition-container.js";
 import Loader from "./loader.js";
 import SvgIcon from "./svg-icon.js";
-import { cardCls } from "./tw/layout.js";
+import { cardCls } from "./tailwind/layout.js";
 
 // props: { messages: [{ id, type: "" | "" | "", text: "", duration: 6}]}
 export default class Message extends Component {

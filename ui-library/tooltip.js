@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import Transition from "./transition";
 import SvgIcon from "./svg-icon";
-import { cardCls } from "./tw/layout";
+import { cardCls } from "./tailwind/layout";
 
 export default function Tooltip({ children, description, size, cls }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -112,4 +112,4 @@ export default function Tooltip({ children, description, size, cls }) {
 /**
  <Tooltip >nibcwirb ni vpjwnvp vpwbvpiw vpwjvnpw vpwijvn</Tooltip>
  <Tooltip description="nibcwirb ni vpjwnvp vpwbvpiw vpwjvnpw vpwijvn"/>
- */
+*/

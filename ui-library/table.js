@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Avatar from "./avatar";
-import { borderCls } from "./tw/layout";
+import { borderCls } from "./tailwind/layout";
 import ComboBox from "./combobox";
 // Read more about HTML table: https://www.w3schools.com/html/html_tables.asp
 

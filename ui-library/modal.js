@@ -1,7 +1,7 @@
 "use client";
 import Transition from "./transition.js";
 import SvgIcon from "./svg-icon.js";
-import { btnCls } from "./tw/button.js";
+import { btnCls } from "./tailwind/button.js";
 import Loader from "./loader.js";
 
 export default function Modal({ Tag, lang = "en", title, open, loading, icon, ...props }) {

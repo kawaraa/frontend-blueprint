@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cookies } from "next/headers";
 import { getSupportedLanguage } from "@/util/get-browser-language";
-import TextComponent from "./xxx/test-component";
+import { linkCls } from "@/ui-library/tailwind/button";
 
 export default async function Home({ params, searchParams }) {
   const lang =
@@ -15,7 +15,9 @@ export default async function Home({ params, searchParams }) {
       {/* "flex flex-col gap-[32px] row-start-2 items-center sm:items-start" */}
       <Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
 
-      <TextComponent />
+      <a href="/test" className={linkCls}>
+        Go to Test Component page
+      </a>
     </>
   );
 }

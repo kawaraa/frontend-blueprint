@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import SvgIcon from "./svg-icon";
-import { cardCls } from "./tw/layout";
+import { cardCls } from "./tailwind/layout";
 
 export default function SearchBox({ onSearch, onFinish, cls = "", inCls = "", ...p }) {
   const inputRef = useRef();

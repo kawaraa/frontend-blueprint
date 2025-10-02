@@ -27,6 +27,3 @@ export const badge2 = `${baseBadge} bg-green-100 text-green-800`;
 export const badge3 = `${baseBadge} bg-sky-100 text-sky-800`;
 export const badge4 = `${baseBadge} bg-amber-100 text-amber-800`;
 export const badge5 = `${baseBadge} bg-violet-100 text-violet-800`;
-// export const centerShadow = "shadow-[0_0_8px_rgba(0,0,0,0.08)]"; // shadow-[0_0_10px_rgba(0,0,0,0.1)]
-
-// "truncate" class cutes the text and tail it with ...
