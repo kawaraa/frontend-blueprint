@@ -28,7 +28,7 @@ export default async function RootLayout({ children, params, searchParams }) {
     <html translate="no" lang="en" className={`scroll-smooth ${themeMode}`}>
       {/* bg-neutral-50 text-slate-700 dark:bg-black dark:text-gray-300 */}
       <body
-        className={`${kufiFont.className} min-h-screen flex flex-col antialiased selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white`}
+        className={`${kufiFont.className} min-h-screen flex flex-col antialiased selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white text-gray-600 dark:text-gray-400`}
       >
         <Suspense>
           <StateProvider>

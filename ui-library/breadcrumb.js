@@ -7,7 +7,7 @@ export default function Breadcrumb({ items = [], current, separator, cls = "" })
   const isCurrent = (item) => current && [item.name, item.path, item].includes(current);
 
   return (
-    <ol className={`h-5 md:h-7 flex items-center px-2 md:px-4 opacity-60 ${cls}`}>
+    <ol className={`h-5 md:h-7 flex items-center px-2 md:px-4 opacity-90 ${cls}`}>
       <li className="h-full aspect-square ">{separator || <SvgIcon name="house" />}</li>
       {items.map((item, i) => (
         <li className="flex items-center h-full" key={i}>

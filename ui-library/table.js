@@ -4,12 +4,11 @@ import { borderCls } from "./tailwind/layout";
 import ComboBox from "./combobox";
 // Read more about HTML table: https://www.w3schools.com/html/html_tables.asp
 
-export default function Table({ data, onCheck, onClick, imgKey, translation = {}, ...p }) {
-  if (!data?.length) return null;
+export default function Table({ data = [], onCheck, onClick, imgKey, translation = {}, ...p }) {
   const headers = !data.length ? [] : Object.keys(data[0]);
   const [checkedItems, setCheckedItems] = useState([]);
   const containsImage = imgKey && headers.includes(imgKey);
-  const thCls = `px-2 py-3 ${p.hCls}`;
+  const thCls = `px-2 py-3 ${p.hCls || ""}`;
   const allChecked = checkedItems.length == data.length;
 
   const handleSelectAll = ({ target: { checked } }) => {
@@ -26,7 +25,10 @@ export default function Table({ data, onCheck, onClick, imgKey, translation = {}
   }, [checkedItems]);
 
   return (
-    <div className={`${borderCls} max-h-[85vh] overflow-x-auto no-srl-bar rounded-lg ${p.cls || ""}`}>
+    <div
+      id={p.id}
+      className={`${borderCls} max-h-[85vh] overflow-x-auto no-srl-bar rounded-lg ${p.cls || ""}`}
+    >
       <table className="table-auto w-full">
         <thead className="sticky top-0 z-[1] backdrop-blur-md font-semibold capitalize after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-neutral-200 after:dark:bg-neutral-700 ">
           <tr className="text-center">

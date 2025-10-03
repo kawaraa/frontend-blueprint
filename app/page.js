@@ -9,7 +9,7 @@ export default async function Home({ params, searchParams }) {
       (await params).lang || (await searchParams)?.lang || (await cookies()).get("lang")?.value
     ) || "ar";
 
-  console.log("Home:", lang);
+  // console.log("Home:", lang);
   return (
     <>
       {/* "flex flex-col gap-[32px] row-start-2 items-center sm:items-start" */}

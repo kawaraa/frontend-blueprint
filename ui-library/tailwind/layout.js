@@ -1,6 +1,6 @@
 // Layout
 export const bodyCls =
-  "min-h-screen flex flex-col bg-white text-slate-700 dark:bg-black dark:text-gray-200 selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white antialiased theme-transition tracking-wide ";
+  "min-h-screen flex flex-col bg-white text-gray-600 dark:text-gray-400 dark:bg-black selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white antialiased theme-transition tracking-wide ";
 export const navCls = " ";
 export const mainCls =
   "flex-auto pt-10 pb-24 px-1 sm:px-2 md:px-4 flex flex-col gap-[32px] justify-start items-center sm:justify-center";

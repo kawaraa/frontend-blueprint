@@ -8,7 +8,7 @@ const liCls = "";
 const linkCls = "block  underline underline-offset-8";
 
 export default function Navigation({ lang }) {
-  console.log("Navigation:", lang);
+  // console.log("Navigation:", lang);
 
   const { user } = State();
   const loginLink = user?.loading ? (
