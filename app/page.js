@@ -15,6 +15,10 @@ export default async function Home({ params, searchParams }) {
       {/* "flex flex-col gap-[32px] row-start-2 items-center sm:items-start" */}
       <Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
 
+      <a href="/ui-component" className={linkCls}>
+        Go to UI Components page
+      </a>
+      <span>OR</span>
       <a href="/test" className={linkCls}>
         Go to Test Component page
       </a>

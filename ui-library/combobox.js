@@ -5,11 +5,11 @@ import { inputCls } from "./tailwind/input";
 import { cardCls } from "./tailwind/layout";
 import Transition from "./transition";
 
-export default function ComboBox({ items = [], selected = [], onSearch, onSelect, multiple, key, name }) {
+export default function ComboBox({ items = [], selected, onSearch, onSelect, multiple, key, name }) {
   const [options, setOptions] = useState(items);
   const [showList, setShowList] = useState();
   const [value, setValue] = useState("");
-  const [selectedItems, setSelectedItems] = useState(selected);
+  const [selectedItems, setSelectedItems] = useState(selected || []);
 
   const handleSelect = (index) => {
     const clickItem = options[index][key] || options[index];
@@ -55,12 +55,12 @@ export default function ComboBox({ items = [], selected = [], onSearch, onSelect
       <button
         onClick={() => setShowList(!showList)}
         type="button"
-        className="w-6 absolute inset-y-0 right-0 flex items-center cursor-pointer"
+        className="w-5 absolute inset-y-0 right-1 flex items-center cursor-pointer"
         tabIndex="-1"
         aria-haspopup="true"
         aria-expanded="false"
       >
-        <SvgIcon name="arrowsUpAndDown" />
+        <SvgIcon name="chevronsUpDown" />
       </button>
 
       <Transition

@@ -85,3 +85,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - Links and actions (Blue): `#47A5de` / `blue-500` Or `cyan-400`
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## For UI style inspiration
+
+- Look at [tailwind UI blocks](https://tailwindcss.com/plus/ui-blocks)

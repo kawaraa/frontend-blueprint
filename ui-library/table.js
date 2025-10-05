@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Avatar from "./avatar";
 import { borderCls } from "./tailwind/layout";
 import ComboBox from "./combobox";
+import SvgIcon from "./svg-icon";
 // Read more about HTML table: https://www.w3schools.com/html/html_tables.asp
 
-export default function Table({ data = [], onCheck, onClick, imgKey, translation = {}, ...p }) {
+export default function Table({ data = [], onCheck, onClick, onSort, imgKey, translation = {}, ...p }) {
   const headers = !data.length ? [] : Object.keys(data[0]);
   const [checkedItems, setCheckedItems] = useState([]);
   const containsImage = imgKey && headers.includes(imgKey);
@@ -41,8 +42,14 @@ export default function Table({ data = [], onCheck, onClick, imgKey, translation
             {headers.map(
               (h, i) =>
                 h != imgKey && (
-                  <th className={thCls} key={i}>
+                  <th onClick={() => onSort && onSort(h)} className={`${thCls} `} key={i}>
                     {h}
+
+                    {onSort && (
+                      <button className="w-4 inline-block align-middle cursor-pointer">
+                        <SvgIcon name="chevronsUpDown" />
+                      </button>
+                    )}
                   </th>
                 )
             )}
