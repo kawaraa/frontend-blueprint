@@ -1,4 +1,5 @@
 "use client";
+import CheckboxDropList from "@/ui-library/checkbox-drop-list";
 import EmptyState from "@/ui-library/empty-state";
 import SearchBox from "@/ui-library/search-box";
 import Table, { TableColumnsSelect } from "@/ui-library/table";
@@ -12,6 +13,20 @@ export default function TextComponent({ params, searchParams }) {
 
   return (
     <div className="w-full relative flex flex-wrap justify-center items-center">
+      <form
+        onChange={(e) => console.log(new FormData(e.target.form).getAll("key[]"))}
+        className={itemCls + "flex justify-center items-center"}
+      >
+        <CheckboxDropList
+          name="key"
+          title="some title"
+          items={[
+            { label: "item-1", key: "item-1" },
+            { label: "item-2", key: "item" },
+          ]}
+        />
+      </form>
+
       <div className={itemCls}>
         <TableColumnsSelect
           columns={dataFields}

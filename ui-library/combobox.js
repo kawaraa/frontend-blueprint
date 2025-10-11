@@ -5,11 +5,12 @@ import { inputCls } from "./tailwind/input";
 import { cardCls } from "./tailwind/layout";
 import Transition from "./transition";
 
-export default function ComboBox({ items = [], selected, onSearch, onSelect, multiple, key, name }) {
+export default function ComboBox({ items = [], selected, onSearch, onSelect, multiple, key, ...p }) {
   const [options, setOptions] = useState(items);
   const [showList, setShowList] = useState();
   const [value, setValue] = useState("");
   const [selectedItems, setSelectedItems] = useState(selected || []);
+  const handleTranslation = (text) => (typeof p.translate == "function" ? p.translate(text) : text);
 
   const handleSelect = (index) => {
     const clickItem = options[index][key] || options[index];
@@ -21,9 +22,15 @@ export default function ComboBox({ items = [], selected, onSearch, onSelect, mul
 
   const handleSearch = async (text = "") => {
     setValue(text);
-    setShowList(true);
     if (onSearch) return onSearch(text);
     setOptions(items.filter((item) => (item[key] || item).toLowerCase().includes(text)));
+  };
+
+  const handleHideList = (e) => {
+    const button = e.target.name == "chevronsUpDownBtn";
+    if (button || (e.target.name == p.name && e.target.name == document.activeElement.name)) {
+      setShowList((x) => !x);
+    }
   };
 
   useEffect(() => {
@@ -38,27 +45,27 @@ export default function ComboBox({ items = [], selected, onSearch, onSelect, mul
   }, [items]);
 
   return (
-    <div className={`relative w-48 `}>
+    <div onClick={handleHideList} className={`relative w-48 ${p.cls || ""}`}>
       <input
         // w-full border-none py-2 pl-3 pr-10 text-sm leading-9 text-gray-900 focus:ring-0
         onFocus={() => handleSearch()}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder={selectedItems.length > 1 ? `( ${selectedItems.length} )` : selectedItems[0] || ""}
         value={value}
-        name={name}
+        name={p.name}
         type="text"
-        className={`${inputCls}`}
+        className={`${inputCls} ${p.inCls || ""}`}
         role="combobox"
         aria-controls="combobox-list"
-        aria-expanded="false"
+        aria-expanded={showList}
       />
       <button
-        onClick={() => setShowList(!showList)}
         type="button"
+        name="chevronsUpDownBtn"
         className="w-5 absolute inset-y-0 right-1 flex items-center cursor-pointer"
         tabIndex="-1"
         aria-haspopup="true"
-        aria-expanded="false"
+        aria-expanded={showList}
       >
         <SvgIcon name="chevronsUpDown" />
       </button>
@@ -74,7 +81,7 @@ export default function ComboBox({ items = [], selected, onSearch, onSelect, mul
         {options.map((item, i) => {
           const checked = item.checked || selectedItems.includes(item[key] || item);
           return (
-            <li className="flex items-center select-none text-gray-900" key={i}>
+            <li dir="ltr" className="flex items-center select-none text-gray-900" key={i}>
               <button
                 onClick={() => handleSelect(i)}
                 className="flex items-center w-full cursor-pointer select-none py-2 px-3"
@@ -85,7 +92,7 @@ export default function ComboBox({ items = [], selected, onSearch, onSelect, mul
                   {checked && <SvgIcon name="checkMark" />}
                 </span>
                 <span className="w-1"></span>
-                {item}
+                {handleTranslation(item)}
               </button>
             </li>
           );

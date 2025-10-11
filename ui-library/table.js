@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import Avatar from "./avatar";
 import { borderCls } from "./tailwind/layout";
@@ -5,10 +6,11 @@ import ComboBox from "./combobox";
 import SvgIcon from "./svg-icon";
 // Read more about HTML table: https://www.w3schools.com/html/html_tables.asp
 
-export default function Table({ data = [], onCheck, onClick, onSort, imgKey, translation = {}, ...p }) {
+export default function Table({ data = [], onCheck, onClick, onSort, ...p }) {
   const headers = !data.length ? [] : Object.keys(data[0]);
   const [checkedItems, setCheckedItems] = useState([]);
-  const containsImage = imgKey && headers.includes(imgKey);
+  const handleTranslation = (text) => (typeof p.translate == "function" ? p.translate(text) : text);
+  const containsImage = headers.includes("image");
   const thCls = `px-2 py-3 ${p.hCls || ""}`;
   const allChecked = checkedItems.length == data.length;
 
@@ -38,10 +40,10 @@ export default function Table({ data = [], onCheck, onClick, onSort, imgKey, tra
                 <input type="checkbox" onChange={handleSelectAll} checked={allChecked} className="w-12" />
               </td>
             )}
-            {containsImage && <td className={thCls}>{translation[imgKey] || imgKey}</td>}
+            {containsImage && <td className={thCls}>{handleTranslation("image")}</td>}
             {headers.map(
               (h, i) =>
-                h != imgKey && (
+                h != "image" && (
                   <th onClick={() => onSort && onSort(h)} className={`${thCls} `} key={i}>
                     {h}
 
@@ -76,14 +78,14 @@ export default function Table({ data = [], onCheck, onClick, onSort, imgKey, tra
               )}
               {containsImage && (
                 <td className="p-2 flex justify-center">
-                  <Avatar src={row[imgKey]} />
+                  <Avatar src={row.image} />
                 </td>
               )}
               {headers.map(
                 (field, i) =>
-                  field != imgKey && (
+                  field != "image" && (
                     <td className="p-2" key={i}>
-                      {translation[row[field]] || row[field]}
+                      {handleTranslation(row[field])}
                     </td>
                   )
               )}
@@ -106,7 +108,7 @@ export function TableColumnsSelect({ columns = [], selected, onSelect }) {
   <TableColumnsSelect columns={allFields} selected={allFields} onSelect={handler} />
 
   <div className="text-center w-full relative">
-    <Table data={x} imgKey="image" onCheck={handler} onClick={handler}>
+    <Table data={x}  onCheck={handler} onClick={handler}>
     <LoadMoreButton />
     </Table>
   </div>

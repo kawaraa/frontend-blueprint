@@ -6,10 +6,11 @@ import { cardCls } from "./tailwind/layout";
 const itemCls =
   "w-full px-4 py-2 mb-1 odd:bg-white even:bg-gray-50 dark:odd:bg-gray-900/50 dark:even:bg-gray-950";
 
-export default function Dropdown({ btn, icon, items, children, event, alt, url, key, onSelect, ...props }) {
+export default function Dropdown({ btn, icon, items, children, event, alt, url, onSelect, ...p }) {
   const wrapper = useRef(null);
   const [active, setActive] = useState(false);
   const rect = wrapper.current?.getBoundingClientRect();
+  const handleTranslation = (text) => (typeof p.translate == "function" ? p.translate(text) : text);
   const btnProps = {};
 
   if (event !== "click") {
@@ -46,12 +47,12 @@ export default function Dropdown({ btn, icon, items, children, event, alt, url, 
 
   const mt = event == "click" ? "mt-[10px]" : "";
   return (
-    <div ref={wrapper} {...btnProps} className={`relative inline-block select-none ${props.cls || ""}`}>
+    <div ref={wrapper} {...btnProps} className={`relative inline-block select-none ${p.cls || ""}`}>
       <button
         type="button"
         onClick={() => setActive(!active)}
         className={`overflow-hidden flex flex-col w-full items-center justify-center rounded-md hover:text-blue-400 ${
-          props.btnCls || ""
+          p.btnCls || ""
         }`}
         title={alt || "menu"}
         aria-label={alt}
@@ -73,22 +74,24 @@ export default function Dropdown({ btn, icon, items, children, event, alt, url, 
       >
         {items &&
           items.map((item, i) => (
-            <li role="menuitem" className="flex" key={i}>
+            <li className="flex" key={i}>
               {item.path ? (
                 <a
-                  onClick={() => onSelect && onSelect(item[key] || item)}
+                  onClick={() => onSelect && onSelect(item)}
                   href={item.path}
                   className={itemCls}
+                  role="menuitem"
                 >
-                  {item[key] || item}
+                  {handleTranslation(item.label || item)}
                 </a>
               ) : (
                 <button
                   type="button"
-                  onClick={() => onSelect && onSelect(item[key] || item)}
+                  onClick={() => onSelect && onSelect(item)}
                   className={itemCls}
+                  role="menuitem"
                 >
-                  {item[key] || item}
+                  {handleTranslation(item.label || item)}
                 </button>
               )}
             </li>
