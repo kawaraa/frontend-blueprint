@@ -20,6 +20,7 @@ export default function Dropdown({ btn, icon, items, children, event, alt, url, 
 
   const getPosition = () => {
     if (!rect) return "";
+    if (p.position) return p.position;
     const right = window.innerWidth - rect.x;
     return right < rect.x && right < 200 ? "left" : rect.x < right && rect.x < 200 ? "right" : "left";
   };
