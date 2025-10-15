@@ -69,19 +69,11 @@ export default function TextComponent({ params, searchParams }) {
         </Table>
       </div>
 
-      <div className={itemCls + "flex justify-center items-center"}>
+      <div className={itemCls + " flex justify-center items-center"}>
         <EmptyState />
       </div>
+
       <div className={itemCls}>
-        <Collapse>
-          <p>Some a very very very long paragraph</p>
-          <p>Some a very very very long paragraph</p>
-          <p>Some a very very very long paragraph</p>
-          <p>Some a very very very long paragraph</p>
-        </Collapse>
-
-        <div className="h-10"></div>
-
         <Loader loading={true} size="50" />
 
         <div className="h-10"></div>
@@ -98,18 +90,28 @@ export default function TextComponent({ params, searchParams }) {
               item 1 item 1 item 1 item 1 item 1 item 1 item 1 item 1 item 1 item 1 item 1 item 1
             </li>
           </Dropdown>
-
-          <div className="h-10"></div>
-          <ShareCopyButton text="Some text" cls="m-10" />
-
-          <ToggleSwitch label="Toggle" name="key" />
-
-          <Tooltip>nibcwirb ni vpjwnvp vpwbvpiw vpwjvnpw vpwijvn</Tooltip>
-
-          <Tooltip description="nibcwirb ni vpjwnvp vpwbvpiw vpwjvnpw vpwijvn" />
         </div>
-        <div className={itemCls}></div>
-        {/* <Message
+
+        <div className="h-10"></div>
+        <ShareCopyButton text="Some text" cls="m-10" />
+
+        <ToggleSwitch label="Toggle" name="key" />
+
+        <Tooltip>nibcwirb ni vpjwnvp vpwbvpiw vpwjvnpw vpwijvn</Tooltip>
+
+        <Tooltip description="nibcwirb ni vpjwnvp vpwbvpiw vpwjvnpw vpwijvn" />
+        <div className="h-10"></div>
+      </div>
+
+      <div className={itemCls}>
+        <Collapse>
+          <p>Some a very very very long paragraph</p>
+          <p>Some a very very very long paragraph</p>
+          <p>Some a very very very long paragraph</p>
+          <p>Some a very very very long paragraph</p>
+        </Collapse>
+      </div>
+      {/* <Message
           messages={[
             { id: "1212", type: "error", text: "Some error message", duration: 6 },
             { id: "2431", type: "warning", text: "Some warning message", duration: 6 },
@@ -117,7 +119,7 @@ export default function TextComponent({ params, searchParams }) {
           ]}
           setMessages={() => {}}
         /> */}
-        {/* <Modal
+      {/* <Modal
           Tag="article"
           lang="en"
           title="Add new user"
@@ -128,8 +130,7 @@ export default function TextComponent({ params, searchParams }) {
           onApprove={() => {}}
           okBtn="Ok"
         ></Modal> */}
-        {/* <IosInstallModal lang="en" iconSrc="/apple-touch-icon.png" name="The App Name" /> */}
-      </div>
+      {/* <IosInstallModal lang="en" iconSrc="/apple-touch-icon.png" name="The App Name" /> */}
 
       {Array(10)
         .fill(null)
