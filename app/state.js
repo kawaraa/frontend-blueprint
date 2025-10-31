@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { getBrowserLanguage } from "k-utilities/browser/device-fingerprint";
 import SelectLanguageDialog from "@/component/select-language-dialog";
 import { Cookies } from "k-utilities/browser/cookies";
+import { supportedLanguages } from "@/content/shared";
 // import Messages from "./components/messages";
 // import Loader from "./components/loader";
 
@@ -43,7 +44,7 @@ export function RootStateProvider({ children, lang }) {
       {children}
       {/* {user?.loading && <Loader size="40" wrapperCls="z-9 absolute inset-0 !m-0 bg-blur" />}
       <Messages messages={messages} setMessages={setMessages} /> */}
-      <SelectLanguageDialog open={showLangDialog} />
+      <SelectLanguageDialog items={supportedLanguages} open={showLangDialog} updateLang={updateLang} />
     </StateContext.Provider>
   );
 }

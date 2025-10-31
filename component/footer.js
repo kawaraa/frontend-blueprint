@@ -1,10 +1,9 @@
 "use client";
-import Image from "next/image";
 // import { State } from "@/app/state";
 
 export default function Footer({ lang }) {
   // const { user } = State();
-  console.log("Footer:", lang);
+  // console.log("Footer:", lang);
 
   // if (!user?.id) return null;
   return (
@@ -15,7 +14,7 @@ export default function Footer({ lang }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
+        <img aria-hidden src="/file.svg" alt="File icon" width={16} height={16} loading="lazy" />
         Learn
       </a>
       <a
@@ -24,7 +23,7 @@ export default function Footer({ lang }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
+        <img aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} loading="lazy" />
         Examples
       </a>
       <a
@@ -33,7 +32,7 @@ export default function Footer({ lang }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
+        <img aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} loading="lazy" />
         Go to nextjs.org →
       </a>
     </footer>

@@ -11,12 +11,14 @@ export default function useRequestApi({ baseUrl, blockAlert }) {
     try {
       if (body) body = JSON.stringify(body);
       const headers = { ...(method == "GET" ? {} : defaultHeader), ...newHeaders };
-      return request(`${baseUrl}/${endpoint}`, { method, body, headers });
+      const res = await request(`${baseUrl}/${endpoint}`, { method, body, headers });
+      setLoading(false);
+      return res;
     } catch (error) {
       // showMessage({ type: "error", text: error, duration: 3 });
       if (!blockAlert) alert(JSON.stringify(error.message || error.error || error));
+      setLoading(false);
     }
-    setLoading(false);
     return;
   };
 

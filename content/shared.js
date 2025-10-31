@@ -1,4 +1,9 @@
-export const title = { en: "Site name", ar: "AR Site name" };
+export const title = { en: "EN Site name", ar: "AR Site name" };
+
+export const supportedLanguages = [
+  { name: "English", code: "en" },
+  { name: "العربية", code: "ar" },
+];
 
 export const done = { en: "Done", ar: "تم" };
 export const send = { en: "Send", ar: "إرسال" };

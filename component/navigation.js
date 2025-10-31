@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { title } from "../content/shared";
+// import { title } from "../content/shared";
 import Link from "next/link";
 import { State } from "@/app/state";
 import { LogOut } from "lucide-react";
@@ -9,7 +9,6 @@ const linkCls = "block  underline underline-offset-8";
 
 export default function Navigation({ lang }) {
   // console.log("Navigation:", lang);
-
   const { user } = State();
   const loginLink = user?.loading ? (
     ""

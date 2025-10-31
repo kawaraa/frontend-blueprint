@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 // import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Suspense } from "react";
-import { getSupportedLanguage } from "@/util/get-browser-language";
+import { extractLanguage, getSupportedLanguage } from "@/util/get-browser-language";
 import getMetadata from "./metadata";
 import { RootStateProvider } from "./state";
 import Navigation from "@/component/navigation";
@@ -17,10 +17,8 @@ export default async function RootLayout({ children, params, searchParams }) {
   const cookieStore = await cookies();
   const themeMode = cookieStore.get("themeMode")?.value || "auto";
   const lang = getSupportedLanguage(
-    (await params).lang ||
-      (await searchParams)?.lang ||
-      (children?.props?.childProp?.segment || [])[1] ||
-      cookieStore.get("lang")?.value
+    (await extractLanguage(params, searchParams, cookieStore)) ||
+      (children?.props?.childProp?.segment || [])[1]
   );
 
   return (

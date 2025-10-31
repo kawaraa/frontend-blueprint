@@ -1,19 +1,15 @@
-import Image from "next/image";
 import { cookies } from "next/headers";
-import { getSupportedLanguage } from "@/util/get-browser-language";
+import { extractLanguage, getSupportedLanguage } from "@/util/get-browser-language";
 import { linkCls } from "@/ui-library/tailwind/button";
 
 export default async function Home({ params, searchParams }) {
-  const lang =
-    getSupportedLanguage(
-      (await params).lang || (await searchParams)?.lang || (await cookies()).get("lang")?.value
-    ) || "ar";
+  const lang = getSupportedLanguage(await extractLanguage(params, searchParams, cookies())) || "en";
 
   // console.log("Home:", lang);
   return (
     <>
       {/* "flex flex-col gap-[32px] row-start-2 items-center sm:items-start" */}
-      <Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
+      <img className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} />
 
       <a href="/ui-component" className={linkCls}>
         Go to UI Components page

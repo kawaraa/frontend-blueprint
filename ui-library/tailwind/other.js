@@ -1,3 +1,4 @@
+// bg-[rgb(0, 0, 0, 0.1)]
 // bg-black/50 - backdrop-blur-sm
 // odd:bg-neutral-100 odd:dark:bg-neutral-800
 // "truncate" class cutes the text and tail it with ...
