@@ -98,7 +98,8 @@ export function InputWithSelect({ label, options, value, onChange, cls, ...p }) 
           defaultValue={values[1]}
           title={p.title}
           aria-label={p.title}
-          className="h-[100%] bg-cbg w-auto px-2 py-1 card cd_hr fs rounded-r-md">
+          className="h-[100%] bg-cbg w-auto px-2 py-1 card cd_hr fs rounded-r-md"
+        >
           {options.map((op, i) => (
             <option value={op.key} key={i}>
               {op.text}
@@ -146,25 +147,11 @@ export function CheckInput({ children, size = "20", color = 0, cls, onChange, ..
             ...s(checkSize, checkSize),
             borderWidth: btnRef.current?.checked ? `${checkBorder}px` : 0,
           }}
-          className={`box-content ${colors[color]} ${radius} duration-150`}></span>
+          className={`box-content ${colors[color]} ${radius} duration-150`}
+        ></span>
       </div>
       {children && <span className="mx-1">{children}</span>}
     </label>
-  );
-}
-
-export function CheckCard({ Tag = "label", children, cls, inCls, ...p }) {
-  return (
-    <Tag htmlFor={cls} className={`relative bg-cbg rounded-lg card cd_hr ${cls || ""}`}>
-      <input
-        id={cls}
-        title={p.title || p.name}
-        aria-label={p.title || p.name}
-        className={`absolute top-0 left-0 w-full h-full appearance-none border-pc bg-[rgb(0,0,0,0.1)] dark:bg-blur checked:bg-[transparent] dark:checked:bg-[transparent] checked:border-4 rounded-lg fs ${inCls}`}
-        {...p}
-      />
-      {children}
-    </Tag>
   );
 }
 
@@ -178,7 +165,8 @@ export function ToggleSwitch({ children, label, size = 50, cls, ...p }) {
         htmlFor={cls}
         dir="ltr"
         style={{ width: `${size}px`, height: `${h}px` }}
-        className={`overflow-hidden relative inline-flex items-center rounded-full cursor-pointer`}>
+        className={`overflow-hidden relative inline-flex items-center rounded-full cursor-pointer`}
+      >
         <input
           type="checkbox"
           id={cls}
@@ -187,7 +175,8 @@ export function ToggleSwitch({ children, label, size = 50, cls, ...p }) {
         />
         <span
           style={{ width: `${h - 2}px`, height: `${h - 2}px` }}
-          className={`inline-block bg-bg absolute ml-[2px] border border-bc peer-checked:translate-x-full rounded-full transition-all duration-200`}></span>
+          className={`inline-block bg-bg absolute ml-[2px] border border-bc peer-checked:translate-x-full rounded-full transition-all duration-200`}
+        ></span>
       </label>
       <span className="w-2 h-2"></span>
       {label && <span className="text-sm font-medium">{label}</span>}
@@ -205,7 +194,8 @@ export function ContentToggleSwitch({ checked, onCheck, size = 50, ...p }) {
     <label
       dir="ltr"
       htmlFor={cls}
-      className="overflow-hidden relative inline-block w-auto h-[24px] cursor-pointer bg-[#121212] rounded-full">
+      className="overflow-hidden relative inline-block w-auto h-[24px] cursor-pointer bg-[#121212] rounded-full"
+    >
       <input
         type="checkbox"
         checked={checked}
@@ -276,7 +266,8 @@ export function Textarea({ children, label, editable, onChange, onBlur, cls, inC
         className={`block w-full p-2 bg-cbg ${
           editable ? "overflow-hidden focus:overflow-auto h-auto pr-10" : "h-32 card cd_hr"
         } fs ${"rounded-md " + inCls}`}
-        {...p}></textarea>
+        {...p}
+      ></textarea>
       {editable && (
         <Button
           onClick={() => icon == "edit" && inputRef.current?.focus()}
@@ -315,7 +306,8 @@ export function Select({ children, label, cls, inCls, onChange, value, defaultVa
         className={
           "inline-block bg-cbg w-auto px-2 py-1 text-center card cd_hr fs " + (inCls || " rounded-md")
         }
-        {...p}>
+        {...p}
+      >
         {children}
       </select>
     </div>

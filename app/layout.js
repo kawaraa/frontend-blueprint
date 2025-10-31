@@ -2,9 +2,9 @@ import { cookies } from "next/headers";
 // import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Suspense } from "react";
-import { getBrowserLanguage, getSupportedLanguage } from "@/util/get-browser-language";
+import { getSupportedLanguage } from "@/util/get-browser-language";
 import getMetadata from "./metadata";
-import { StateProvider } from "./state";
+import { RootStateProvider } from "./state";
 import Navigation from "@/component/navigation";
 import Footer from "@/component/footer";
 import "./globals.css";
@@ -20,8 +20,7 @@ export default async function RootLayout({ children, params, searchParams }) {
     (await params).lang ||
       (await searchParams)?.lang ||
       (children?.props?.childProp?.segment || [])[1] ||
-      cookieStore.get("lang")?.value ||
-      getBrowserLanguage("ar")
+      cookieStore.get("lang")?.value
   );
 
   return (
@@ -31,10 +30,10 @@ export default async function RootLayout({ children, params, searchParams }) {
         className={`${kufiFont.className} min-h-screen flex flex-col antialiased selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white text-gray-600 dark:text-gray-400`}
       >
         <Suspense>
-          <StateProvider>
+          <RootStateProvider lang={lang}>
             <header></header>
 
-            <Navigation lang={lang} />
+            <Navigation lang={lang || "en"} />
 
             <main
               className="flex-auto pt-10 pb-24 px-1 sm:px-2 md:px-4 flex flex-col gap-[32px] justify-start items-center sm:justify-center"
@@ -43,8 +42,8 @@ export default async function RootLayout({ children, params, searchParams }) {
               {children}
             </main>
 
-            <Footer lang={lang} />
-          </StateProvider>
+            <Footer lang={lang || "en"} />
+          </RootStateProvider>
         </Suspense>
       </body>
     </html>
@@ -54,10 +53,7 @@ export default async function RootLayout({ children, params, searchParams }) {
 export async function generateMetadata({ params, searchParams }) {
   const cookieStore = await cookies();
   const lang = getSupportedLanguage(
-    (await params).lang ||
-      (await searchParams)?.lang ||
-      cookieStore.get("lang")?.value ||
-      getBrowserLanguage("ar")
+    (await params).lang || (await searchParams)?.lang || cookieStore.get("lang")?.value || "en"
   );
   return getMetadata({ lang });
 }

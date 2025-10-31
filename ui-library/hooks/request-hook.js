@@ -1,0 +1,45 @@
+"use client";
+import { useState } from "react";
+
+export default function useRequestApi({ baseUrl, blockAlert }) {
+  const [loading, setLoading] = useState(false);
+  // const { showMessage } = useContext(StateContext);
+  const defaultHeader = { "Content-Type": "application/json" };
+
+  const handleRequest = async (endpoint, method = "GET", body, newHeaders) => {
+    setLoading(true);
+    try {
+      if (body) body = JSON.stringify(body);
+      const headers = { ...(method == "GET" ? {} : defaultHeader), ...newHeaders };
+      return request(`${baseUrl}/${endpoint}`, { method, body, headers });
+    } catch (error) {
+      // showMessage({ type: "error", text: error, duration: 3 });
+      if (!blockAlert) alert(JSON.stringify(error.message || error.error || error));
+    }
+    setLoading(false);
+    return;
+  };
+
+  return [handleRequest, loading, setLoading];
+}
+
+export function request() {
+  return fetch(...arguments)
+    .then(async (res) => {
+      let data = await res.text();
+      try {
+        data = JSON.parse(data);
+      } catch (err) {}
+      if (!res.ok) throw data;
+      return data;
+    })
+    .catch((error) => {
+      throw new Error(parseError(error));
+    });
+}
+
+/* *** Usage ***
+const [handleRequest, loading, setLoading] = useRequestApi({ baseUrl, blockAlert });
+
+const data = handleRequest(endpoint, ...)
+*/
