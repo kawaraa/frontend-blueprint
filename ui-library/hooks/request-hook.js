@@ -40,6 +40,13 @@ export function request() {
     });
 }
 
+export function parseError(value, msgs = "") {
+  if (value && typeof value != "object") return msgs + value + " ";
+  if (value instanceof Error && value.message) return msgs + value.message + " ";
+  else if (Array.isArray(value)) value.forEach((item) => (msgs += parseError(item)));
+  else Object.keys(value).forEach((k) => (msgs += parseError(value[k])));
+  return msgs?.trim() || "Unknown error";
+}
 /* *** Usage ***
 const [handleRequest, loading, setLoading] = useRequestApi({ baseUrl, blockAlert });
 
