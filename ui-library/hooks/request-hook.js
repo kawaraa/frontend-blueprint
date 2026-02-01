@@ -1,28 +1,64 @@
 "use client";
 import { useState } from "react";
+import config from "../config.json";
+const credentials = process.env.NEXT_PUBLIC_WITH_CREDENTIALS || process.env.WITH_CREDENTIALS;
 
-export default function useRequestApi({ baseUrl, blockAlert }) {
-  const [loading, setLoading] = useState(false);
-  // const { showMessage } = useContext(StateContext);
-  const defaultHeader = { "Content-Type": "application/json" };
+export function getURL(key) {
+  return !config[key] ? key : config.apiHost + config[key];
+}
 
-  const handleRequest = async (endpoint, method = "GET", body, newHeaders) => {
-    setLoading(true);
+export default function useApiRequest({ endpoint, setLoading, blockAlert = [], defaultData, dataFormatter }) {
+  const [data, setData] = useState(defaultData || []);
+  const [total, setTotal] = useState(0);
+
+  const request = async (query, method = "GET", body, page = 1) => {
+    const alert = !blockAlert.includes(method);
+    if (setLoading) setLoading(true);
     try {
-      if (body) body = JSON.stringify(body);
-      const headers = { ...(method == "GET" ? {} : defaultHeader), ...newHeaders };
-      const res = await request(`${baseUrl}/${endpoint}`, { method, body, headers });
-      setLoading(false);
+      if (query) body = { body, query: query };
+      const res = await apiRequest(endpoint, method, body);
+      if (setLoading) setLoading(false);
+      let newData = res.data || res;
+      if (dataFormatter) newData = dataFormatter(res);
+
+      if (page > 1) setData(data.concat(newData));
+      else if (newData) {
+        setData(newData);
+        setTotal(res.total || newData.length || 0);
+      }
+
+      if (method != "GET" && alert) alert("Done");
       return res;
     } catch (error) {
-      // showMessage({ type: "error", text: error, duration: 3 });
-      if (!blockAlert) alert(JSON.stringify(error.message || error.error || error));
-      setLoading(false);
+      // Error translation: translateError(error.message, lang)
+      if (alert) alert(JSON.stringify(error.message || error.error || error));
     }
+    if (setLoading) setLoading(false);
     return;
   };
 
-  return [handleRequest, loading, setLoading];
+  return [request, data, total, setData, setTotal];
+}
+
+export async function apiRequest(url, method = "GET", data, arg = {}) {
+  let aUrl = getURL(url);
+  const headers = {};
+  let body = null;
+
+  const prepareBody = (data) => {
+    headers["Content-Type"] = "application/json";
+    return JSON.stringify(data);
+  };
+
+  if (data) {
+    if (data.token) headers.Authorization = `Bearer ${data.token}`;
+    if (data.query) aUrl += data.query;
+    if (data instanceof FormData) body = data;
+    else if (data.body instanceof FormData) body = data.body;
+    else if (data.body) body = prepareBody(data.body);
+    else if (!data.query) body = prepareBody(data);
+  }
+  return request(aUrl, { method, body, headers, ...arg, credentials });
 }
 
 export function request() {
@@ -47,8 +83,15 @@ export function parseError(value, msgs = "") {
   else Object.keys(value).forEach((k) => (msgs += parseError(value[k])));
   return msgs?.trim() || "Unknown error";
 }
+
+export function translateError(error, lang = "en") {
+  // console.log("translateError: >>> ", error);
+  const [code, message] = error?.toLowerCase().split("-") || [];
+  return (config.errors[code]?.[lang] || config.errors.default[lang]) + " " + (message || "");
+}
+
 /* *** Usage ***
-const [handleRequest, loading, setLoading] = useRequestApi({ baseUrl, blockAlert });
+const [handleRequest, loading, setLoading] = useApiRequest({ baseUrl, blockAlert });
 
 const data = handleRequest(endpoint, ...)
 */
