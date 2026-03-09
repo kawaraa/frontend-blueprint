@@ -17,7 +17,7 @@ export default function useApiRequest({ endpoint, setLoading, blockAlert = [], d
     try {
       if (query) body = { body, query: query };
       const res = await apiRequest(endpoint, method, body);
-      if (setLoading) setLoading(false);
+
       let newData = res.data || res;
       if (dataFormatter) newData = dataFormatter(res);
 
@@ -28,13 +28,13 @@ export default function useApiRequest({ endpoint, setLoading, blockAlert = [], d
       }
 
       if (method != "GET" && alert) alert("Done");
+      if (setLoading) setLoading(false);
       return res;
     } catch (error) {
       // Error translation: translateError(error.message, lang)
       if (alert) alert(JSON.stringify(error.message || error.error || error));
     }
     if (setLoading) setLoading(false);
-    return;
   };
 
   return [request, data, total, setData, setTotal];
