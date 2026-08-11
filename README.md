@@ -4,12 +4,12 @@ Structuring the folders and files in your frontend project is crucial for mainta
 
 ## This project will following the Next.js App Router version with the following file structure:
 
-- **app:**
-  - The pages placeholder.
+- **app/pages:**
+  - The pages placeholder for all pages components.
 - **locale:**
-  - For UI translation JSON files.
+  - For UI translation JSON files if it's managed on code level.
 - **content:**
-  - For static blogs and public documentations JSON file.
+  - For static blogs and public documentations JSON file if they are managed on code level.
 - **doc:**
   - Project Codebase-related documentations for contributors.
 - **public:**

@@ -1,6 +1,6 @@
 # Use NGINX to serve pre-built static files (from your local dist/)
 # --- Stage 1: Build React app ---
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /
 COPY package*.json ./
@@ -10,6 +10,8 @@ ARG NEXT_API_URL
 ENV NEXT_API_URL=$NEXT_API_URL
 
 COPY . .
+ENV TURBOPACK_THREADS=1
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # --- Stage 2: Serve with Nginx ---
