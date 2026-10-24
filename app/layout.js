@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import { Suspense } from "react";
 import { extractLanguage, getSupportedLanguage } from "@/util/get-browser-language";
 import getMetadata from "./metadata";
-import { RootStateProvider } from "./state";
+import { RootStateProvider } from "./root-state";
 import Navigation from "@/component/navigation";
 import Footer from "@/component/footer";
 import "./globals.css";
@@ -25,8 +25,7 @@ export default async function RootLayout({ children, params, searchParams }) {
     <html translate="no" lang="en" className={`scroll-smooth ${themeMode}`}>
       {/* bg-neutral-50 text-slate-700 dark:bg-black dark:text-gray-300 */}
       <body
-        className={`${kufiFont.className} min-h-screen flex flex-col antialiased selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white text-gray-600 dark:text-gray-400`}
-      >
+        className={`${kufiFont.className} min-h-screen flex flex-col antialiased selection:bg-teal-300 dark:selection:bg-pink-500 dark:selection:text-white text-gray-600 dark:text-gray-400`}>
         <Suspense>
           <RootStateProvider lang={lang}>
             <header></header>
@@ -35,8 +34,7 @@ export default async function RootLayout({ children, params, searchParams }) {
 
             <main
               className="flex-auto pt-10 pb-24 px-1 sm:px-2 md:px-4 flex flex-col gap-[32px] justify-start items-center sm:justify-center"
-              dir="auto"
-            >
+              dir="auto">
               {children}
             </main>
 

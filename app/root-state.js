@@ -49,7 +49,7 @@ export function RootStateProvider({ children, lang }) {
   );
 }
 
-export const State = () => useContext(StateContext);
+export const useRootState = () => useContext(StateContext);
 
 function registerServiceWorker(update) {
   if ("serviceWorker" in navigator && !window.location.origin.includes("localhost")) {

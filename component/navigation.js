@@ -2,14 +2,14 @@
 import Image from "next/image";
 // import { title } from "../content/shared";
 import Link from "next/link";
-import { State } from "@/app/state";
+import { useRootState } from "@/app/root-state";
 import { LogOut } from "lucide-react";
 const liCls = "";
 const linkCls = "block  underline underline-offset-8";
 
 export default function Navigation({ lang }) {
   // console.log("Navigation:", lang);
-  const { user } = State();
+  const { user } = useRootState();
   const loginLink = user?.loading ? (
     ""
   ) : (
@@ -23,8 +23,7 @@ export default function Navigation({ lang }) {
   return (
     <nav
       className="z-[7] bg-white sticky w-full flex px-1 sm:px-2 md:px-4 top-0 card border no-select"
-      dir="auto"
-    >
+      dir="auto">
       <ul className="flex-auto flex items-center gap-3 no-select p-4">
         {!user?.id ? (
           <li className="w-7">
